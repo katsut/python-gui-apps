@@ -1,5 +1,5 @@
 import tkinter as tk
-import random
+
 
 # ↓↓↓ お約束のコード ↓↓↓
 window = tk.Tk()
