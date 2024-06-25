@@ -54,11 +54,11 @@ def reset():
 def check_winner(mark) -> bool:
     for i in range(3):
         for j in range(3 - i):
-            # 横ライン
+            # 縦ライン
             if i == 0:
                 if mark == matrix[i][j] == matrix[i + 1][j] == matrix[i + 2][j]:
                     return True
-            # 縦ライン
+            # 横ライン
             if j == 0:
                 if mark == matrix[i][j] == matrix[i][j + 1] == matrix[i][j + 2]:
                     return True
