@@ -10,14 +10,26 @@ fg_color = "#FFFFFF"  # 白
 window.configure(bg=bg_color)
 # ↑↑↑ お約束のコード ↑↑↑
 
+# これまでに入力された名前を覚えておくところ
 name_list = []
 
 
 def button_action():  # 関数の定義 ※ボタンが押されたときの動き
     user_input = entry1.get()  # 入力値を取得
-    name_list.append(user_input)
-    label1.config(text="\n".join(name_list))  # 画面に出力
+    name_list.append(user_input)  # 入力された名前を覚える
 
+    # 配列をそのまま出すのではなく、改行を入れて表示する
+    # formatted_str = ""
+    # for name in name_list:
+    #     formatted_str += f"{name}\n"  # \(バックスラッシュ) の入力方法は option + ¥
+
+    formatted_str = "\n".join(name_list)  # これでも改行を入れることができる
+
+    label1.config(text=formatted_str)  # ここまでに入力された名前を表示する
+
+
+label0 = tk.Label(window, text="名前を入力してください", bg=bg_color, fg=fg_color)
+label0.pack(pady=10)
 
 # 入力フィールドの作成
 entry1 = tk.Entry(window, bg=fg_color, fg=bg_color)
