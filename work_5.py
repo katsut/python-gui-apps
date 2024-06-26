@@ -31,6 +31,7 @@ def button_action():  # 関数の定義 ※ボタンが押されたときの動�
         current_word = random_choice(word_list)
         properties["current"] = current_word
         label1.config(text=current_word)  # 画面に出力
+        entry1.delete(tk.FIRST, tk.END)  # Entryの文字を削除
 
 
 def random_choice(words):  # 関数の定義 ※ボタンが押されたときの動き
