@@ -30,8 +30,14 @@ def button_action():  # 関数の定義 ※ボタンが押されたときの動�
     if properties["current"] == user_input:
         current_word = random_choice(word_list)
         properties["current"] = current_word
+        properties["count"] = properties["count"] + 1
         label1.config(text=current_word)  # 画面に出力
-        entry1.delete(tk.FIRST, tk.END)  # Entryの文字を削除
+        label2.config(text=f"正解数: {properties['count']}")
+        entry1.delete(0, tk.END)  # Entryの文字を削除
+
+
+def return_action(event):
+    button_action()
 
 
 def random_choice(words):  # 関数の定義 ※ボタンが押されたときの動き
@@ -40,17 +46,20 @@ def random_choice(words):  # 関数の定義 ※ボタンが押されたとき�
 
 
 current = random_choice(word_list)
-properties = {"current": current}
+properties = {"current": current, "count": 0}
 
 
 # 出力ラベルの作成
 label1 = tk.Label(window, text=current, bg=bg_color, fg=fg_color)
 label1.pack(pady=10)
 
+label2 = tk.Label(window, text="正解数:", bg=bg_color, fg=fg_color)
+label2.pack(pady=10)
+
 # 入力フィールドの作成
 entry1 = tk.Entry(window, bg=fg_color, fg=bg_color)
 entry1.pack(pady=10)
-
+entry1.bind("<Return>", return_action)
 # ボタンの作成
 button1 = tk.Button(window, text="OK", command=button_action)
 button1.pack(pady=10)
